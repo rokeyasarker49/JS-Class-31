@@ -13,7 +13,7 @@ const displayOurTours = (countries) => {
                 div.innerHTML = `
                         <h3>${country.name.common}</h3>
                         <p>${country?.capital}</p>
-                        <button>Show Details</button>
+                        <button onClick="${loadCountryByNmae("Ukraine")}">Show Details</button>
                 `
 
                 countryDiv.appendChild(div)
@@ -21,3 +21,21 @@ const displayOurTours = (countries) => {
 }
 
 loadCountries()
+
+const loadCountryByName = (name) =>{
+        fetch(`https://restcountries.com/v3.1/name/${name}`)
+        .then(response => response.json())
+        .then(data => countryShow(data[0]))
+}
+
+const countryShow = (country) =>{
+        const countryDetails = document.getElementById('countryDetails');
+        countryDetails.innerHTML = `
+                <h3>Name: ${country.name.common}</h3>
+                <p>Capital: ${country.name.capital}</p>
+                <p>Population: ${country.population}</p>
+                <img src=${country.flags.png} alt=${country.flags.alt}>
+        `;
+}
+
+// loadCountryByName('Ukraine')
