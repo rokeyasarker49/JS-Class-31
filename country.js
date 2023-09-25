@@ -13,7 +13,7 @@ const displayOurTours = (countries) => {
                 div.innerHTML = `
                         <h3>${country.name.common}</h3>
                         <p>${country?.capital}</p>
-                        <button onClick="${loadCountryByNmae("Ukraine")}">Show Details</button>
+                        <button onClick=loadCountryByNmae('${country.name.common}'>Show Details</button>
                 `
 
                 countryDiv.appendChild(div)
@@ -29,7 +29,7 @@ const loadCountryByName = (name) =>{
 }
 
 const countryShow = (country) =>{
-        const countryDetails = document.getElementById('countryDetails');
+        const countryDetails = document.getElementById('country-details');
         countryDetails.innerHTML = `
                 <h3>Name: ${country.name.common}</h3>
                 <p>Capital: ${country.name.capital}</p>
